@@ -9,6 +9,7 @@
 <script src="{{ asset('/storage/admin/assets/js/dashboard.js') }}"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 <script>
 
     @if (Session::has('message'))
@@ -42,5 +43,6 @@
         }
         toastr.warning("{{ session('warning') }}");
     @endif
+
 </script>
 @stack('admin_scripts')

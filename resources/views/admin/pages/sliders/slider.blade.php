@@ -24,8 +24,6 @@
                                     <th> Title </th>
                                     <th> Image </th>
                                     <th> Description </th>
-                                    <th> Button Text </th>
-                                    <th> Button Link </th>
                                     <th> Action </th>
                                 </tr>
                             </thead>
@@ -41,8 +39,6 @@
                                             @endif
                                         </td>
                                         <td> {{ Str::limit($slider->description, 30) ?? '' }} </td>
-                                        <td> {{ $slider->button_text ?? '' }} </td>
-                                        <td> {{ $slider->button_link ?? '' }} </td>
                                         <td>
                                             <div class="d-flex gap-2 justify-content-center">
                                                 <button type="button" class="btn btn-gradient-primary btn-rounded btn-icon"
@@ -82,7 +78,6 @@
                                                             <div class="row">
                                                                 <div class="col-12">
                                                                     <div class="">
-
                                                                         <div class="form-group">
                                                                             <label for="exampleInputName1">Title</label>
                                                                             <input type="text" name="title"
@@ -90,25 +85,6 @@
                                                                                 value="{{ $slider->title ?? '' }}"
                                                                                 id="exampleInputName1" placeholder="Title"
                                                                                 required>
-                                                                        </div>
-
-                                                                        <div class="form-group">
-                                                                            <label for="exampleInputName1">Button
-                                                                                Text</label>
-                                                                            <input type="text" name="button_text"
-                                                                                class="form-control"
-                                                                                value="{{ $slider->button_text ?? '' }}"
-                                                                                id="exampleInputName1"
-                                                                                placeholder="Button Text" required>
-                                                                        </div>
-                                                                        <div class="form-group">
-                                                                            <label for="exampleInputName1">Button
-                                                                                Link</label>
-                                                                            <input type="text" name="button_link"
-                                                                                class="form-control"
-                                                                                value="{{ $slider->button_link ?? '' }}"
-                                                                                id="exampleInputName1"
-                                                                                placeholder="Button Link (optional)">
                                                                         </div>
                                                                         <div class="form-group">
                                                                             <label for="exampleInputEmail3">Short
@@ -173,17 +149,6 @@
                                         <label for="exampleInputName1">Title</label>
                                         <input type="text" name="title" class="form-control" id="exampleInputName1"
                                             placeholder="Title" required>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label for="exampleInputName1">Button Text</label>
-                                        <input type="text" name="button_text" class="form-control"
-                                            id="exampleInputName1" placeholder="Button Text" required>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="exampleInputName1">Button Link</label>
-                                        <input type="text" name="button_link" class="form-control"
-                                            id="exampleInputName1" placeholder="Button Link (optional)">
                                     </div>
                                     <div class="form-group">
                                         <label for="exampleInputEmail3">Short Description</label>

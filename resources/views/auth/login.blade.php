@@ -11,7 +11,7 @@
             <div class="col-lg-4 mx-auto">
               <div class="auth-form-light text-left p-5">
                 <div class="brand-logo text-center">
-                  <img src="{{ asset('/storage/admin/assets/images/logo.svg') }}">
+                  <img src="{{ asset('/storage/admin/assets/images/logo.jpeg') }}">
                 </div>
                 <!-- Session Status -->
                 <x-auth-session-status class="mb-4" :status="session('status')" />
@@ -27,7 +27,7 @@
                     <x-input-error :messages="$errors->get('password')" class="mt-2" />
                 </div>
                   <div class="mt-3 d-grid gap-2">
-                    <button type="submit" class="btn btn-block btn-gradient-primary btn-lg font-weight-medium auth-form-btn">SIGN IN</button>
+                    <button type="submit" class="btn btn-block btn-gradient-danger btn-lg font-weight-medium auth-form-btn">SIGN IN</button>
                   </div>
                   {{-- <div class="my-2 d-flex justify-content-between align-items-center">
                     <div class="form-check">

@@ -16,7 +16,6 @@
                         <h4 class="mobile-margin-10px-bottom">Quick Links</h4>
                         <ul class="footer-list no-margin-bottom">
                             <li><a href="{{ route('home.index') }}" class="font-size14">Home</a></li>
-                            <li><a href="{{ route('home.gallery') }}" class="font-size14">Gallery</a></li>
                             <li><a href="{{ route('home.profile') }}" class="font-size14">About Us</a></li>
                             <li><a href="{{ route('home.contact') }}" class="font-size14">Contact Us</a></li>
                         </ul>
@@ -34,13 +33,13 @@
                     <div class="footer-icon">
                         <ul class="no-margin-bottom">
                             <li>
-                                <a target="_blank" href="{{ website()->facebook_link ?? '' }}"><i class="fab fa-facebook-f"></i></a>
+                                <a target="_blank" class="btn btn-success btn-sm rounded-circle text-white d-flex align-items-center justify-content-center" style="width: 32px;height:32px" href="https://wa.me/88{{ website()->whatsapp_number ?? '' }}"><i class="fab fa-whatsapp"></i></a>
                             </li>
                             <li>
-                                <a target="_blank" href="{{ website()->twitter_link ?? '' }}"><i class="fab fa-twitter"></i></a>
+                                <a target="_blank" class="btn btn-info btn-sm rounded-circle text-white d-flex align-items-center justify-content-center" style="width: 32px;height:32px" href="{{ website()->linkedin_link ?? '' }}"><i class="fab fa-linkedin-in"></i></a>
                             </li>
                             <li>
-                                <a target="_blank" href="{{ website()->linkedin_link ?? '' }}"><i class="fab fa-linkedin-in"></i></a>
+                                <a target="_blank" class="btn btn-primary btn-sm rounded-circle text-white d-flex align-items-center justify-content-center" style="width: 32px;height:32px" href="{{ website()->facebook_link ?? '' }}"><i class="fab fa-facebook-f"></i></a>
                             </li>
                         </ul>
                     </div>
@@ -51,7 +50,7 @@
     </div>
     <div class="footer-style3-bottom">
         <div class="container">
-            <p class="font-size14">&copy; {{ date('Y') }} Construction Express is Powered by SZamantech</p>
+            <p class="font-size14">&copy; {{ date('Y') }} Rajdhani Studio is Powered by SZamantech</p>
         </div>
     </div>
 </footer>

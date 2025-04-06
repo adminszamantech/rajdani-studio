@@ -41,9 +41,9 @@
                                 placeholder="Enter Linkedin Link" required>
                         </div>
                         <div class="form-group">
-                            <label for="exampleInputTwLink">Twitter Link</label>
-                            <input type="text" name="twitter_link" value="{{ $setting->twitter_link ?? '' }}" class="form-control" id="exampleInputTwLink"
-                                placeholder="Enter Twitter Link" required>
+                            <label for="exampleInputTwLink">Whatsapp Number</label>
+                            <input type="text" name="whatsapp_number" value="{{ $setting->whatsapp_number ?? '' }}" class="form-control" id="exampleInputTwLink"
+                                placeholder="Enter Whatsapp Number" required>
                         </div>
                         <div class="form-group">
                             <label>Logo upload</label>

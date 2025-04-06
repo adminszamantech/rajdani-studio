@@ -3,7 +3,8 @@
     Projects
 @endpush
 @push('admin_css')
-    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+<link href="https://cdn.jsdelivr.net/npm/summernote@0.9.0/dist/summernote-bs4.min.css" rel="stylesheet">
 @endpush
 
 @section('admin_content')
@@ -84,7 +85,7 @@
                                     @if (isset($project))
                                         <div class="modal fade" id="editprojectModal-{{ $project->id }}" tabindex="-1"
                                             aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                            <div class="modal-dialog">
+                                            <div class="modal-dialog modal-lg">
                                                 <form action="{{ route('projects.update',$project->id) }}" method="post"
                                                     enctype="multipart/form-data">
                                                     @csrf
@@ -124,12 +125,12 @@
                                                                         <div class="form-group">
                                                                             <label
                                                                                 for="exampleInputEmail3">Description</label>
-                                                                            <textarea name="description" class="form-control editsummernote" placeholder="Description" required>{!! $project->description !!}</textarea>
+                                                                            <textarea name="description"  class="form-control summernote" placeholder="Description" required>{!! $project->description !!}</textarea>
                                                                         </div>
                                                                         <div class="form-group">
-                                                                            <div class="py-2">
+                                                                            <div class="py-2 d-flex justify-content-center">
                                                                                 @if ($project->type == 'image')
-                                                                                    <img class="w-100" style="height: 180px" src="{{ asset('/storage/admin/assets/images/project/' . $project->image_video) }}" alt="image">
+                                                                                    <img class="w-50" src="{{ asset('/storage/admin/assets/images/project/' . $project->image_video) }}" alt="image">
                                                                                 @elseif($project->type == 'video')
                                                                                     <video class="w-100" controls>
                                                                                         <source
@@ -202,7 +203,7 @@
     </div>
     <!-- add Modal -->
     <div class="modal fade" id="addprojectModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
+        <div class="modal-dialog modal-lg">
             <form action="{{ route('projects.store') }}" method="post" enctype="multipart/form-data">
                 @csrf
                 <div class="modal-content">
@@ -232,7 +233,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="exampleInputEmail3">Description</label>
-                                        <textarea name="description" id="addSummernote" class="form-control" placeholder="Description" required></textarea>
+                                        <textarea name="description" class="form-control summernote" placeholder="Description" required></textarea>
                                     </div>
                                     <div class="form-group">
                                         <label for="exampleInputName1">File Type</label>
@@ -267,19 +268,30 @@
 @endsection
 
 @push('admin_scripts')
-    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.9.0/dist/summernote-bs4.min.js"></script>
     <script src="{{ asset('/storage/admin/assets/js/file-upload.js') }}"></script>
     <script>
         $(document).ready(function() {
-            $('#addSummernote').summernote({
-                height: 100,
-                focus: true
+            $('.summernote').summernote({
+                placeholder: 'Type Here...',
+                tabsize: 2,
+                height: 250,
+                toolbar: [
+                    // Basic style options
+                    ['style', ['bold', 'italic', 'underline', 'clear']],
+                    ['font', ['fontname', 'fontsize', 'strikethrough', 'superscript', 'subscript']],
+                    ['para', ['ul', 'ol', 'paragraph', 'height', 'style']],
+                    ['align', ['left', 'center', 'right', 'justify']],
+                    ['insert', ['link', 'picture', 'video']],
+                    ['view', ['fullscreen', 'codeview', 'help']],
+                    ['color', ['forecolor', 'backcolor']],
+                    ['table', ['table']],
+                    ['misc', ['undo', 'redo']]
+                ]
             });
-            $('.editsummernote').summernote({
-                height: 100,
-                focus: true
-            });
-
             $('button[id^="projectDeleteButton-"]').click(function() {
                 var projectId = $(this).attr('id').split('-')[1];
                 Swal.fire({

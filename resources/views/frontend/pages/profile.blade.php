@@ -1,5 +1,5 @@
 @extends('frontend.layouts.main')
-@section('title', 'Profile')
+@section('title', 'About Us')
 
 @section('content')
 
@@ -9,12 +9,12 @@
 
             <div class="row">
                 <div class="col-md-12">
-                    <h1>Profile</h1>
+                    <h1>About Us</h1>
                 </div>
                 <div class="col-md-12">
                     <ul>
                         <li><a href="{{ route('home.index') }}">Home</a></li>
-                        <li><a href="javascript:void(0)">Profile</a></li>
+                        <li><a href="javascript:void(0)">About Us</a></li>
                     </ul>
                 </div>
             </div>
@@ -48,7 +48,7 @@
                         <div class="padding-80px-left md-padding-50px-left sm-no-padding-left">
                             <h3
                                 class="font-size15 md-font-size14 sm-font-size13 text-uppercase margin-15px-bottom md-margin-10px-bottom font-weight-400 letter-spacing-3 word-spacing-3 text-theme-color">
-                                Profile</h3>
+                                About Us</h3>
                             <h4
                                 class="font-size40 md-font-size36 sm-font-size30 xs-font-size26 font-weight-500 margin-25px-bottom md-margin-25px-bottom sm-margin-15px-bottom">
                                 {{ $profile->title ?? '' }}</h4>

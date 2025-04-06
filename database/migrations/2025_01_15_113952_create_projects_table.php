@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('project_category_id');
             $table->string('title');
-            $table->text('description');
+            $table->longText('description');
             $table->text('image_video')->nullable();
             $table->enum('type',['image','video'])->nullable();
             $table->boolean('is_active')->default(true)->comment('1=active, 0=inactive');
