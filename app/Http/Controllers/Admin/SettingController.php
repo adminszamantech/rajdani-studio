@@ -47,7 +47,7 @@ class SettingController extends Controller
             }
             if ($request->hasFile('logo_image')){
                 $folder = 'admin/assets/images/logo/';
-                $width = 150; $height = 85;
+                $width = 265; $height = 60;
                 $this->services->imageDestroy($setting->logo_image,'admin/assets/images/logo/');
                 $data['logo_image'] = $this->services->imageUpload($request->file('logo_image'), $folder,$width,$height);
             }
@@ -56,7 +56,7 @@ class SettingController extends Controller
             $data['address'] = $request->address;
             $data['facebook_link'] = $request->facebook_link;
             $data['linkedin_link'] = $request->linkedin_link;
-            $data['twitter_link'] = $request->twitter_link;
+            $data['whatsapp_number'] = $request->whatsapp_number;
             $setting->update($data);
             return redirect()->route('websiteSetting')->with('message','Website Setting Updated');
         }

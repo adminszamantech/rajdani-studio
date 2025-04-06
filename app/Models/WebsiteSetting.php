@@ -14,6 +14,6 @@ class WebsiteSetting extends Model
         'favicon_image',
         'facebook_link',
         'linkedin_link',
-        'twitter_link',
+        'whatsapp_number',
     ];
 }

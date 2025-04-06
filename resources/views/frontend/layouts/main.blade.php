@@ -26,7 +26,6 @@
     <link rel="stylesheet" href="{{ asset('/storage/frontend/css/rev_slider/navigation.css') }}">
     <link rel="stylesheet" href="{{ asset('/storage/frontend/search/search.css') }}" />
     <link href="{{ asset('/storage/frontend/css/styles.css') }}" rel="stylesheet" />
-
 </head>
 
 <body>

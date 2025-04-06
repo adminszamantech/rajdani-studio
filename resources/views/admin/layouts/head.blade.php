@@ -9,10 +9,15 @@
 <link rel="stylesheet" href="{{ asset('/storage/admin/assets/vendors/bootstrap-datepicker/bootstrap-datepicker.min.css') }}">
 <link rel="stylesheet" href="{{ asset('/storage/admin/assets/css/style.css') }}">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
+
 <link rel="shortcut icon" href="@if(website()->favicon_image) {{ asset('/storage/admin/assets/images/logo/'.website()->favicon_image) }} @else {{ asset('/storage/admin/assets/images/favicon.png') }} @endif" />
 <style>
     .navbar .navbar-brand-wrapper .navbar-brand img {
-        height: 51px;
+        width: 80%;
+        height: 40px;
+    }
+    .auth .brand-logo img{
+        width: 270px;
     }
 </style>
 @stack('admin_css')

@@ -33,23 +33,6 @@
         </div>
     </li>
     <li class="nav-item">
-        <a class="nav-link" data-bs-toggle="collapse" href="#services" aria-expanded="false" aria-controls="services">
-            <span class="menu-title">Service Pages</span>
-            <i class="menu-arrow"></i>
-            <i class="mdi mdi-format-list-bulleted menu-icon"></i>
-        </a>
-        <div class="collapse" id="services">
-            <ul class="nav flex-column sub-menu">
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ route('services.index') }}">Lists</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ route('service-categories.index') }}">Service Categories</a>
-                </li>
-            </ul>
-        </div>
-    </li>
-    <li class="nav-item">
         <a class="nav-link" data-bs-toggle="collapse" href="#projects" aria-expanded="false" aria-controls="projects">
             <span class="menu-title">Project Pages</span>
             <i class="menu-arrow"></i>
@@ -67,35 +50,6 @@
         </div>
     </li>
     <li class="nav-item">
-        <a class="nav-link" data-bs-toggle="collapse" href="#testimonials" aria-expanded="false"
-            aria-controls="testimonials">
-            <span class="menu-title">Testimonial</span>
-            <i class="menu-arrow"></i>
-            <i class="mdi mdi-format-list-bulleted menu-icon"></i>
-        </a>
-        <div class="collapse" id="testimonials">
-            <ul class="nav flex-column sub-menu">
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ route('testimonials.index') }}">Lists</a>
-                </li>
-            </ul>
-        </div>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link" data-bs-toggle="collapse" href="#galleries" aria-expanded="false" aria-controls="galleries">
-            <span class="menu-title">Gallery Pages</span>
-            <i class="menu-arrow"></i>
-            <i class="mdi mdi-format-list-bulleted menu-icon"></i>
-        </a>
-        <div class="collapse" id="galleries">
-            <ul class="nav flex-column sub-menu">
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ route('galleries.index') }}">Lists</a>
-                </li>
-            </ul>
-        </div>
-    </li>
-    <li class="nav-item">
         <a class="nav-link" data-bs-toggle="collapse" href="#aboutus" aria-expanded="false" aria-controls="aboutus">
             <span class="menu-title">About Pages</span>
             <i class="menu-arrow"></i>
@@ -104,10 +58,7 @@
         <div class="collapse" id="aboutus">
             <ul class="nav flex-column sub-menu">
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('profiles.index') }}">Profile</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ route('mission-vissions.index') }}">Mission & Vission</a>
+                    <a class="nav-link" href="{{ route('profiles.index') }}">About</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('messages.index') }}">Message</a>

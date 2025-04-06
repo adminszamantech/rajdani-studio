@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('messages', function (Blueprint $table) {
             $table->id();
             $table->string('title');
-            $table->text('description')->nullable();
+            $table->longText('description')->nullable();
             $table->text('image_video')->nullable();
             $table->enum('type',['image','video'])->nullable();
             $table->boolean('is_active')->default(true)->comment('1=active, 0=inactive');
