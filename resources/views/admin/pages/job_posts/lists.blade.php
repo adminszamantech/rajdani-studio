@@ -4,6 +4,7 @@
 @endpush
 @push('admin_css')
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
 <link href="https://cdn.jsdelivr.net/npm/summernote@0.9.0/dist/summernote-bs4.min.css" rel="stylesheet">
 @endpush
 
@@ -137,7 +138,7 @@
                                     @endif
                                 @empty
                                     <tr class="text-center">
-                                        <td class="text-center" colspan="7">Not Found</td>
+                                        <td colspan="10" class="text-center" colspan="7">Not Found</td>
                                     </tr>
                                 @endforelse
                             </tbody>
