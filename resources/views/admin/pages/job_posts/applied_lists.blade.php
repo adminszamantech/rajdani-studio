@@ -40,10 +40,32 @@
                                         <div class="card shadow ">
                                             <div class="d-flex justify-content-between">
                                                 <div class="card-body p-4">
-                                                    <p class="m-0"><b>Full Name:</b> {{ $unseen->full_name ?? '' }}</p>
-                                                    <p class="m-0"><b>Email:</b> {{ $unseen->email ?? '' }}</p>
-                                                    <p class="m-0"><b>Phone:</b> {{ $unseen->phone ?? '' }}</p>
-                                                    <p class="m-0"><b>CV Link:</b> <a href="{{ asset('/storage/admin/assets/images/cv/'.$unseen->cv) }}" target="_blank">Click for view</a></p>
+
+                                                    <div class="row mb-3">
+                                                        <div class="col-3"><strong>Full Name</strong></div>
+                                                        <div class="col-1"><strong>:</strong></div>
+                                                        <div class="col-8">{{ $unseen->full_name ?? '' }}</div>
+                                                    </div>
+                                                    <div class="row mb-3">
+                                                        <div class="col-3"><strong>Email</strong></div>
+                                                        <div class="col-1"><strong>:</strong></div>
+                                                        <div class="col-8">{{ $unseen->email ?? '' }}</div>
+                                                    </div>
+                                                    <div class="row mb-3">
+                                                        <div class="col-3"><strong>Phone</strong></div>
+                                                        <div class="col-1"><strong>:</strong></div>
+                                                        <div class="col-8">{{ $unseen->phone ?? '' }}</div>
+                                                    </div>
+                                                    <div class="row mb-3">
+                                                        <div class="col-3"><strong>Apply Date</strong></div>
+                                                        <div class="col-1"><strong>:</strong></div>
+                                                        <div class="col-8">{{ Carbon\Carbon::parse($unseen->created_at)->format('Y-m-d h:i A') ?? '' }}</div>
+                                                    </div>
+                                                    <div class="row mb-3">
+                                                        <div class="col-3"><strong>CV Link</strong></div>
+                                                        <div class="col-1"><strong>:</strong></div>
+                                                        <div class="col-8"><a href="{{ asset('/storage/admin/assets/images/cv/'.$unseen->cv) }}" target="_blank">Click for view</a></div>
+                                                    </div>
                                                 </div>
                                                 <div class="gap-2">
                                                     <a href="{{ route('jobAppliedStatus',['id'=>$unseen->id,'status'=>'1']) }}" class="btn btn-sm btn-info" title="Seen"><i class="fa fa-eye"></i></a>
@@ -63,10 +85,31 @@
                                         <div class="card shadow ">
                                             <div class="d-flex justify-content-between">
                                                 <div class="card-body p-4">
-                                                    <p class="m-0"><b>Full Name:</b> {{ $seen->full_name ?? '' }}</p>
-                                                    <p class="m-0"><b>Email:</b> {{ $seen->email ?? '' }}</p>
-                                                    <p class="m-0"><b>Phone:</b> {{ $seen->phone ?? '' }}</p>
-                                                    <p class="m-0"><b>CV Link:</b> <a href="{{ asset('/storage/admin/assets/images/cv/'.$seen->cv) }}" target="_blank">Click for view</a></p>
+                                                    <div class="row mb-3">
+                                                        <div class="col-3"><strong>Full Name</strong></div>
+                                                        <div class="col-1"><strong>:</strong></div>
+                                                        <div class="col-8">{{ $seen->full_name ?? '' }}</div>
+                                                    </div>
+                                                    <div class="row mb-3">
+                                                        <div class="col-3"><strong>Email</strong></div>
+                                                        <div class="col-1"><strong>:</strong></div>
+                                                        <div class="col-8">{{ $seen->email ?? '' }}</div>
+                                                    </div>
+                                                    <div class="row mb-3">
+                                                        <div class="col-3"><strong>Phone</strong></div>
+                                                        <div class="col-1"><strong>:</strong></div>
+                                                        <div class="col-8">{{ $seen->phone ?? '' }}</div>
+                                                    </div>
+                                                    <div class="row mb-3">
+                                                        <div class="col-3"><strong>Apply Date</strong></div>
+                                                        <div class="col-1"><strong>:</strong></div>
+                                                        <div class="col-8">{{ Carbon\Carbon::parse($seen->created_at)->format('Y-m-d h:i A') ?? '' }}</div>
+                                                    </div>
+                                                    <div class="row mb-3">
+                                                        <div class="col-3"><strong>CV Link</strong></div>
+                                                        <div class="col-1"><strong>:</strong></div>
+                                                        <div class="col-8"><a href="{{ asset('/storage/admin/assets/images/cv/'.$seen->cv) }}" target="_blank">Click for view</a></div>
+                                                    </div>
                                                 </div>
                                                 <div class="gap-2">
                                                     <a href="{{ route('jobAppliedStatus',['id'=>$seen->id,'status'=>'0']) }}" class="btn btn-sm btn-primary" title="Unseen"><i class="fa fa-eye-slash"></i></a>
@@ -86,10 +129,31 @@
                                         <div class="card shadow ">
                                             <div class="d-flex justify-content-between">
                                                 <div class="card-body p-4">
-                                                    <p class="m-0"><b>Full Name:</b> {{ $shortlist->full_name ?? '' }}</p>
-                                                    <p class="m-0"><b>Email:</b> {{ $shortlist->email ?? '' }}</p>
-                                                    <p class="m-0"><b>Phone:</b> {{ $shortlist->phone ?? '' }}</p>
-                                                    <p class="m-0"><b>CV Link:</b> <a href="{{ asset('/storage/admin/assets/images/cv/'.$shortlist->cv) }}" target="_blank">Click for view</a></p>
+                                                    <div class="row mb-3">
+                                                        <div class="col-3"><strong>Full Name</strong></div>
+                                                        <div class="col-1"><strong>:</strong></div>
+                                                        <div class="col-8">{{ $shortlist->full_name ?? '' }}</div>
+                                                    </div>
+                                                    <div class="row mb-3">
+                                                        <div class="col-3"><strong>Email</strong></div>
+                                                        <div class="col-1"><strong>:</strong></div>
+                                                        <div class="col-8">{{ $shortlist->email ?? '' }}</div>
+                                                    </div>
+                                                    <div class="row mb-3">
+                                                        <div class="col-3"><strong>Phone</strong></div>
+                                                        <div class="col-1"><strong>:</strong></div>
+                                                        <div class="col-8">{{ $shortlist->phone ?? '' }}</div>
+                                                    </div>
+                                                    <div class="row mb-3">
+                                                        <div class="col-3"><strong>Apply Date</strong></div>
+                                                        <div class="col-1"><strong>:</strong></div>
+                                                        <div class="col-8">{{ Carbon\Carbon::parse($shortlist->created_at)->format('Y-m-d h:i A') ?? '' }}</div>
+                                                    </div>
+                                                    <div class="row mb-3">
+                                                        <div class="col-3"><strong>CV Link</strong></div>
+                                                        <div class="col-1"><strong>:</strong></div>
+                                                        <div class="col-8"><a href="{{ asset('/storage/admin/assets/images/cv/'.$shortlist->cv) }}" target="_blank">Click for view</a></div>
+                                                    </div>
                                                 </div>
                                                 <div class="gap-2">
                                                     <a href="{{ route('jobAppliedStatus',['id'=>$shortlist->id,'status'=>'0']) }}" class="btn btn-sm btn-primary" title="Unseen"><i class="fa fa-eye-slash"></i></a>
