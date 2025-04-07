@@ -30,8 +30,9 @@
                             {{ session('message') }}
                         </div>
                     @endif
-                    <div class="d-flex justify-content-end">
-                        <button type="button" class="btn btn-sm btn-info my-2" data-toggle="modal"
+                    <div class="d-flex justify-content-between align-items-center">
+                        <p class="text-danger"><b>Job Opportunities Available</b></p>
+                        <button type="button" class="btn btn-sm btn-info mb-2" data-toggle="modal"
                             data-target="#applyJobModalCenter">
                             Drop Your CV
                         </button>
