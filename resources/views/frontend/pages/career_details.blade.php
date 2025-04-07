@@ -1,19 +1,20 @@
 @extends('frontend.layouts.main')
-@section('title', 'Career')
+@section('title', 'Job Details')
 
 @section('content')
 
-    <section class="page-title-section bg-img cover-background" data-overlay-dark="75" data-background="{{ asset('/storage/frontend/img/banner/page-title.jpg') }}">
+    <section class="page-title-section bg-img cover-background" data-overlay-dark="75"
+        data-background="{{ asset('/storage/frontend/img/banner/page-title.jpg') }}">
         <div class="container">
 
             <div class="row">
                 <div class="col-md-12">
-                    <h1>Career</h1>
+                    <h1>Job Details</h1>
                 </div>
                 <div class="col-md-12">
                     <ul>
                         <li><a href="{{ route('home.index') }}">Home</a></li>
-                        <li><a href="javascript:void(0)">Career</a></li>
+                        <li><a href="javascript:void(0)">Job Details</a></li>
                     </ul>
                 </div>
             </div>
@@ -24,35 +25,33 @@
     <section>
         <div class="container">
             <div class="row d-flex justify-content-center">
-               <div class="col-md-6">
+                <div class="col-md-10">
                     @if (session('message'))
                         <div class="alert alert-success my-5">
                             {{ session('message') }}
                         </div>
                     @endif
-                    <div class="d-flex justify-content-end">
-                        <button type="button" class="btn btn-sm btn-info my-2" data-toggle="modal"
-                            data-target="#applyJobModalCenter">
-                            Drop Your CV
-                        </button>
+                    <h3 class="text-danger text-center">{{ $jobPost->title . ' Job Post' ?? '' }}</h3>
+                    <hr class="bg-danger">
+                    <div class="card shadow">
+                        <div class="card-body">
+                            <div class="float-right">
+                                <p class="text-danger"><b>Deadline:
+                                        {{ Carbon\Carbon::parse($jobPost->deadline)->format('Y-m-d h:i A') ?? '' }}</b></p>
+                            </div>
+                            <p>{!! $jobPost->description ?? '' !!}</p>
+                        </div>
+                        <div class="card-footer ">
+                            <button type="button" class="btn btn-sm btn-info float-right" data-toggle="modal"
+                                data-target="#applyJobModalCenter">
+                                Apply Now
+                            </button>
+                        </div>
                     </div>
-                        @forelse ($jobPosts->where('status',true) as $jobPost)
-                            <ul class="list-group p-1">
-                                <li class="list-group-item border border-danger">
-                                    <a href="{{ route('home.jobPostDetails',$jobPost->id) }}" class="text-info">{{ $jobPost->title ?? '' }}</a>
-                                </li>
-                            </ul>
-                        @empty
-                            <ul class="list-group">
-                                <li class="list-group-item text-danger text-center border border-danger">No Job Opportunities Available</li>
-                            </ul>
-                        @endforelse
-               </div>
-
+                </div>
             </div>
         </div>
     </section>
-
 
     <!-- Apply Job Modal -->
     <div class="modal fade" id="applyJobModalCenter" tabindex="-1" role="dialog"
@@ -60,6 +59,7 @@
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-header">
+                    <h6 class="modal-title" id="exampleModalLongTitle">{{ $jobPost->title . ' Apply' ?? '' }}</h6>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -70,15 +70,7 @@
                         <div class="row">
                             <div class="col-12">
                                 <div class="">
-                                    <div class="form-group">
-                                        <label for="exampleInputName1">Job Title</label>
-                                        <select name="job_post_id" class="form-control">
-                                            <option value="">Select Job Title</option>
-                                            @foreach ($jobPosts as $item)
-                                                <option value="{{ $item->id }}">{{ $item->title ?? '' }}</option>
-                                            @endforeach
-                                        </select>
-                                    </div>
+                                    <input type="hidden" name="job_post_id" value="{{ $jobPost->id }}">
                                     <div class="form-group">
                                         <label for="exampleInputName1">Full Name</label>
                                         <input type="text" name="full_name" class="form-control"

@@ -67,6 +67,20 @@
         </div>
     </li>
     <li class="nav-item">
+        <a class="nav-link" data-bs-toggle="collapse" href="#jobpost" aria-expanded="false" aria-controls="jobpost">
+            <span class="menu-title">Job Posts</span>
+            <i class="menu-arrow"></i>
+            <i class="mdi mdi-format-list-bulleted menu-icon"></i>
+        </a>
+        <div class="collapse" id="jobpost">
+            <ul class="nav flex-column sub-menu">
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('job-posts.index') }}">Lists</a>
+                </li>
+            </ul>
+        </div>
+    </li>
+    <li class="nav-item">
         <a class="nav-link" data-bs-toggle="collapse" href="#contactus" aria-expanded="false" aria-controls="contactus">
             <span class="menu-title">Contact Pages</span>
             <i class="menu-arrow"></i>
