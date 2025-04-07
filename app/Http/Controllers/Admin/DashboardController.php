@@ -3,13 +3,14 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\Slider;
-use App\Models\Project;
-use App\Models\ProjectCategory;
-use App\Http\Controllers\Controller;
 use App\Models\Contact;
 use App\Models\Message;
-use App\Models\MissionVision;
+use App\Models\Project;
+use App\Models\JobApply;
 use App\Models\Testimonial;
+use App\Models\MissionVision;
+use App\Models\ProjectCategory;
+use App\Http\Controllers\Controller;
 
 class DashboardController extends Controller
 {

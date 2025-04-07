@@ -2,14 +2,13 @@
 
 use App\Http\Controllers\Admin\ContactController;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\JobPostController;
 use App\Http\Controllers\Admin\MessageController;
-use App\Http\Controllers\Admin\MissionVissionController;
 use App\Http\Controllers\Admin\ProfileController as AdminProfileController;
 use App\Http\Controllers\Admin\ProjectCategoryController;
 use App\Http\Controllers\Admin\ProjectController;
 use App\Http\Controllers\Admin\SettingController;
 use App\Http\Controllers\Admin\SliderController;
-use App\Http\Controllers\Admin\TestimonialController;
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Route;
@@ -22,6 +21,8 @@ Route::match(['get','post'],'/contact', [HomeController::class, 'contact'])->nam
 Route::get('/project/{id}', [HomeController::class, 'projects'])->name('home.project');
 Route::get('/project/{id}/detsils', [HomeController::class, 'projectsDetails'])->name('home.projectDetails');
 Route::get('/career', [HomeController::class, 'career'])->name('home.career');
+Route::get('/job-post-details/{jobPost}', [HomeController::class, 'job_post_details'])->name('home.jobPostDetails');
+Route::post('/job-apply', [HomeController::class, 'job_apply'])->name('home.jobApply');
 
 //admin route
 Route::middleware('auth')->group(function () {
@@ -32,6 +33,9 @@ Route::middleware('auth')->group(function () {
     Route::resource('messages',MessageController::class);
     Route::resource('profiles',AdminProfileController::class);
     Route::resource('contacts',ContactController::class);
+    Route::resource('job-posts',JobPostController::class);
+    Route::get('job-applied-lists/{jobPost}',[JobPostController::class,'job_applied_lists'])->name('jobAppliedLists');
+    Route::get('job-applied-status',[JobPostController::class,'job_applied_status'])->name('jobAppliedStatus');
     Route::match(['get','post'],'/website-settings',[SettingController::class,'website_setting'])->name('websiteSetting');
     Route::match(['get','post'],'/profile-settings',[SettingController::class,'profile_setting'])->name('profileSetting');
 });

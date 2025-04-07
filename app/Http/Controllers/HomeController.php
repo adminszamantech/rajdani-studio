@@ -4,16 +4,21 @@ namespace App\Http\Controllers;
 
 use App\Models\Slider;
 use App\Models\Contact;
+use App\Models\JobPost;
 use App\Models\Message;
-use App\Models\MissionVision;
 use App\Models\Profile;
 use App\Models\Project;
-use App\Models\Testimonial;
+use App\Models\JobApply;
+use App\Services\Services;
 use Illuminate\Http\Request;
 use App\Models\ProjectCategory;
 
 class HomeController extends Controller
 {
+    public $services;
+    public function __construct(Services $services) {
+        $this->services = $services;
+    }
     public function home(){
         $sliders = Slider::latest()->get();
         $projectCats = ProjectCategory::where(['is_active'=>true])->get();
@@ -47,6 +52,25 @@ class HomeController extends Controller
     }
 
     public function career(){
-        return view('frontend.pages.career');
+        $jobPosts = JobPost::latest()->get();
+        return view('frontend.pages.career',compact('jobPosts'));
+    }
+
+    public function job_post_details(JobPost $jobPost){
+        return view('frontend.pages.career_details',compact('jobPost'));
+    }
+
+    public function job_apply(Request $request){
+        $jobApply = new JobApply;
+        $jobApply->job_post_id = $request->job_post_id;
+        $jobApply->full_name = $request->full_name;
+        $jobApply->email = $request->email;
+        $jobApply->phone = $request->phone;
+        if ($request->hasFile('cv')){
+            $folder = 'admin/assets/images/cv/';
+            $jobApply->cv = $this->services->pdfUpload($request->file('cv'), $folder);
+        }
+        $jobApply->save();
+        return back()->with('message','Job Applied Successfully');
     }
 }

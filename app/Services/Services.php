@@ -21,6 +21,19 @@ class Services{
          }
     }
 
+    public function pdfUpload($file,$folder){
+         try {
+            if(!Storage::disk('public')->exists($folder)){
+                Storage::disk('public')->makeDirectory($folder);
+            }
+            $fileName = rand(1000, 9999) . time() . "." . strtolower($file->getClientOriginalExtension());
+            Storage::disk('public')->put($folder . $fileName, file_get_contents($file));
+            return $fileName;
+         } catch (\Throwable $th) {
+            return $th->getMessage();
+         }
+    }
+
     public function videoUpload($file,$folder){
         try {
             if(!Storage::disk('public')->exists($folder)){
