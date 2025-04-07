@@ -4,6 +4,7 @@
 @endpush
 @push('admin_css')
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
 <link href="https://cdn.jsdelivr.net/npm/summernote@0.9.0/dist/summernote-bs4.min.css" rel="stylesheet">
 @endpush
 
@@ -81,6 +82,7 @@
                                             </div>
                                         </td>
                                     </tr>
+
                                     <!-- edit Modal -->
                                     @if (isset($project))
                                         <div class="modal fade" id="editprojectModal-{{ $project->id }}" tabindex="-1"
@@ -186,8 +188,10 @@
                                                     </div>
                                                 </form>
                                             </div>
+
                                         </div>
                                     @endif
+
                                 @empty
                                     <tr class="text-center">
                                         <td class="text-center" colspan="7">Not Found</td>
@@ -195,8 +199,10 @@
                                 @endforelse
                             </tbody>
                         </table>
+                        <div class="d-flex justify-content-center">
+                            {!! $projects->links('pagination::bootstrap-4') !!}
+                        </div>
                     </div>
-
                 </div>
             </div>
         </div>

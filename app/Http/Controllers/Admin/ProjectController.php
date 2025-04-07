@@ -20,7 +20,7 @@ class ProjectController extends Controller
     public function index()
     {
         $projectCategories = ProjectCategory::where(['is_active'=>1])->latest()->get();
-        $projects = Project::with('project_category')->select('id','project_category_id','title','description','image_video','type','is_active')->latest()->get();
+        $projects = Project::with('project_category')->select('id','project_category_id','title','description','image_video','type','is_active')->latest()->paginate(20);
         return view('admin.pages.projects.project',compact('projects','projectCategories'));
     }
 
