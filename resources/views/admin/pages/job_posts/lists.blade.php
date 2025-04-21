@@ -19,8 +19,7 @@
             <div class="card">
                 <div class="card-body">
                     <div class="mb-5 d-flex justify-content-end">
-                        <button class="btn btn-md btn-gradient-dark btn-icon-text" data-bs-toggle="modal"
-                            data-bs-target="#addjob_postModal">Add Job Post</button>
+                        <a href="{{ route('job-posts.create') }}" class="btn btn-md btn-gradient-dark btn-icon-text">Add Job Post</a>
                     </div>
                     <div class="table-responsive">
                         <table class="table table-striped">
@@ -61,10 +60,9 @@
                                                 <a href="{{ route('jobAppliedLists',$job_post->id) }}" class="btn btn-gradient-primary btn-rounded btn-icon d-flex justify-content-center align-items-center">
                                                     <i class="mdi mdi-book-open"></i>
                                                 </a>
-                                                <button class="btn btn-gradient-primary btn-rounded btn-icon" data-bs-toggle="modal"
-                                                    data-bs-target="#editjob_postModal-{{ $job_post->id }}">
+                                                <a href="{{ route("job-posts.edit",$job_post->id) }}" class="btn btn-gradient-primary btn-rounded btn-icon d-flex justify-content-center align-items-center">
                                                     <i class="mdi mdi-pencil-outline"></i>
-                                                </button>
+                                                </a>
                                                 <form id="job_postDeleteForm-{{ $job_post->id }}"
                                                     action="{{ route('job-posts.destroy', $job_post->id) }}" method="POST">
                                                     @csrf
@@ -78,64 +76,7 @@
                                             </div>
                                         </td>
                                     </tr>
-                                    <!-- edit Modal -->
-                                    @if (isset($job_post))
-                                        <div class="modal fade" id="editjob_postModal-{{ $job_post->id }}" tabindex="-1"
-                                            aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                            <div class="modal-dialog modal-lg">
-                                                <form action="{{ route('job-posts.update',$job_post->id) }}" method="post"
-                                                    enctype="multipart/form-data">
-                                                    @csrf
-                                                    @method('put')
-                                                    <div class="modal-content">
-                                                        <div class="modal-header">
-                                                            <h5 class="modal-title" id="exampleModalLabel">Edit job_post</h5>
-                                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                                aria-label="Close"></button>
-                                                        </div>
-                                                        <div class="modal-body">
-                                                            <div class="row">
-                                                                <div class="col-12">
-                                                                    <div class="">
-                                                                        <div class="form-group">
-                                                                            <label for="exampleInputName1">Title</label>
-                                                                            <input type="text" name="title"
-                                                                                class="form-control" value="{{ $job_post->title ?? '' }}" id="exampleInputName1"
-                                                                                placeholder="Title" required>
-                                                                        </div>
-                                                                        <div class="form-group">
-                                                                            <label
-                                                                                for="exampleInputEmail3">Description</label>
-                                                                            <textarea name="description" class="form-control summernote" placeholder="Description" required>{!! $job_post->description !!}</textarea>
-                                                                        </div>
-                                                                        <div class="form-group">
-                                                                            <label for="exampleInputName1">Deadline</label>
-                                                                            <input type="datetime-local" name="deadline" value="{{ $job_post->deadline }}" class="form-control" id="exampleInputName1"
-                                                                                placeholder="Deadline" required>
-                                                                        </div>
-                                                                        <div class="form-group">
-                                                                            <label for="exampleInputName1">Status</label>
-                                                                            <select class="form-select"
-                                                                                name="status"
-                                                                                id="exampleFormControlSelect2">
-                                                                                <option value="1" @if($job_post->status == true) selected @endif>Active</option>
-                                                                                <option value="0" @if($job_post->status == false) selected @endif>Inactive</option>
-                                                                            </select>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="modal-footer">
-                                                            <button type="button" class="btn btn-secondary"
-                                                                data-bs-dismiss="modal">Close</button>
-                                                            <button type="submit" class="btn btn-primary">Update</button>
-                                                        </div>
-                                                    </div>
-                                                </form>
-                                            </div>
-                                        </div>
-                                    @endif
+
                                 @empty
                                     <tr class="text-center">
                                         <td colspan="10" class="text-center" colspan="7">Not Found</td>
@@ -147,55 +88,6 @@
 
                 </div>
             </div>
-        </div>
-    </div>
-    <!-- add Modal -->
-    <div class="modal fade" id="addjob_postModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg">
-            <form action="{{ route('job-posts.store') }}" method="post" enctype="multipart/form-data">
-                @csrf
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Add Job Post</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        <div class="row">
-                            <div class="col-12">
-                                <div class="">
-                                    <div class="form-group">
-                                        <label for="exampleInputName1">Title</label>
-                                        <input type="text" name="title" class="form-control" id="exampleInputName1"
-                                            placeholder="Title" required>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="exampleInputEmail3">Description</label>
-                                        <textarea name="description" class="form-control summernote" placeholder="Description" required></textarea>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="exampleInputName1">Deadline</label>
-                                        <input type="datetime-local" name="deadline" class="form-control" id="exampleInputName1"
-                                            placeholder="Deadline" required>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="exampleInputName1">Status</label>
-                                        <select class="form-select"
-                                            name="status"
-                                            id="exampleFormControlSelect2">
-                                            <option value="1" selected>Active</option>
-                                            <option value="0">Inactive</option>
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-primary">Save</button>
-                    </div>
-                </div>
-            </form>
         </div>
     </div>
 @endsection
@@ -211,7 +103,7 @@
             $('.summernote').summernote({
                 placeholder: 'Type Here...',
                 tabsize: 2,
-                height: 250,
+                height: 150,
                 toolbar: [
                     // Basic style options
                     ['style', ['bold', 'italic', 'underline', 'clear']],

@@ -45,6 +45,14 @@ class JobPostController extends Controller
     /**
      * Store a newly created resource in storage.
      */
+    public function create()
+    {
+        return view('admin.pages.job_posts.create');
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     */
     public function store(Request $request)
     {
         JobPost::create($request->all());
@@ -54,9 +62,10 @@ class JobPostController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function edit(string $id)
     {
-        //
+        $job_post = JobPost::find($id);
+        return view('admin.pages.job_posts.edit',compact('job_post'));
     }
 
     /**
@@ -89,6 +98,7 @@ class JobPostController extends Controller
         if($jobPost->job_applied){
             foreach($jobPost->job_applied as $applied){
                 $this->services->imageDestroy($applied->cv,'admin/assets/images/cv/');
+                $this->services->imageDestroy($applied->portfolio,'admin/assets/images/portfolio/');
             }
         }
         $jobPost->delete();

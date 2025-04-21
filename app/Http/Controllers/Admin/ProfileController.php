@@ -27,7 +27,7 @@ class ProfileController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.pages.profiles.create');
     }
 
     /**
@@ -40,7 +40,7 @@ class ProfileController extends Controller
             $data['image_video'] = $this->services->videoUpload($request->file('video'), $folder);
         }
         if ($request->hasFile('image')){
-            $width = 350; $height = 253;
+            $width = 700; $height = 500;
             $folder = 'admin/assets/images/profile/';
             $data['image_video'] = $this->services->imageUpload($request->file('image'), $folder,$width,$height);
         }
@@ -64,7 +64,8 @@ class ProfileController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $profile = Profile::find($id);
+        return view('admin.pages.profiles.edit',compact('profile'));
     }
 
     /**

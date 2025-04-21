@@ -83,13 +83,12 @@
                                                                             <input type="text" name="title"
                                                                                 class="form-control"
                                                                                 value="{{ $slider->title ?? '' }}"
-                                                                                id="exampleInputName1" placeholder="Title"
-                                                                                required>
+                                                                                id="exampleInputName1" placeholder="Title">
                                                                         </div>
                                                                         <div class="form-group">
                                                                             <label for="exampleInputEmail3">Short
                                                                                 Description</label>
-                                                                            <textarea name="description" class="form-control" placeholder="Short Description" required>{{ $slider->description ?? '' }}</textarea>
+                                                                            <textarea name="description" class="form-control" placeholder="Short Description">{{ $slider->description ?? '' }}</textarea>
                                                                         </div>
                                                                         <div class="form-group">
                                                                             <label>File upload</label>
@@ -148,15 +147,15 @@
                                     <div class="form-group">
                                         <label for="exampleInputName1">Title</label>
                                         <input type="text" name="title" class="form-control" id="exampleInputName1"
-                                            placeholder="Title" required>
+                                            placeholder="Title">
                                     </div>
                                     <div class="form-group">
                                         <label for="exampleInputEmail3">Short Description</label>
-                                        <textarea name="description" class="form-control" placeholder="Short Description" required></textarea>
+                                        <textarea name="description" class="form-control" placeholder="Short Description"></textarea>
                                     </div>
                                     <div class="form-group">
                                         <label>File upload</label>
-                                        <input type="file" name="image" class="file-upload-default">
+                                        <input type="file" name="image" class="file-upload-default" required>
                                         <div class="input-group col-xs-12">
                                             <input type="text" class="form-control file-upload-info" disabled
                                                 placeholder="Upload Image">

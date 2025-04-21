@@ -8,18 +8,26 @@ use File;
 class Services{
     public function imageUpload($file,$folder,$width,$height){
          try {
-            if(!Storage::disk('public')->exists($folder)){
+            if (!Storage::disk('public')->exists($folder)) {
                 Storage::disk('public')->makeDirectory($folder);
             }
             $imageName = rand(1000, 9999) . time() . "." . strtolower($file->getClientOriginalExtension());
-            $image = Image::make($file->getContent());
-            $image->resize($width,$height);
-            Storage::disk('public')->put($folder . $imageName, $image->encode());
+            Storage::disk('public')->put($folder . $imageName, file_get_contents($file));
             return $imageName;
+
+            // if(!Storage::disk('public')->exists($folder)){
+            //     Storage::disk('public')->makeDirectory($folder);
+            // }
+            // $imageName = rand(1000, 9999) . time() . "." . strtolower($file->getClientOriginalExtension());
+            // $image = Image::make($file->getContent());
+            // // $image->fit($width, $height);
+            // Storage::disk('public')->put($folder . $imageName, $image->encode());
+            // return $imageName;
          } catch (\Throwable $th) {
             return $th->getMessage();
          }
     }
+
 
     public function pdfUpload($file,$folder){
          try {

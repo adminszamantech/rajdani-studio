@@ -8,5 +8,6 @@ function website(){
 }
 
 function cat_wise_projects($catId){
-    return Project::where(['project_category_id'=>$catId,'is_active'=>true])->get();
+    return Project::where(['project_category_id'=>$catId,'is_active'=>true])->limit(12)->latest()->get();
 }
+

@@ -33,6 +33,20 @@
         </div>
     </li>
     <li class="nav-item">
+        <a class="nav-link" data-bs-toggle="collapse" href="#clients" aria-expanded="false" aria-controls="clients">
+            <span class="menu-title">Client Pages</span>
+            <i class="menu-arrow"></i>
+            <i class="mdi mdi-format-list-bulleted menu-icon"></i>
+        </a>
+        <div class="collapse" id="clients">
+            <ul class="nav flex-column sub-menu">
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('clients.index') }}">Lists</a>
+                </li>
+            </ul>
+        </div>
+    </li>
+    <li class="nav-item">
         <a class="nav-link" data-bs-toggle="collapse" href="#projects" aria-expanded="false" aria-controls="projects">
             <span class="menu-title">Project Pages</span>
             <i class="menu-arrow"></i>
@@ -76,6 +90,21 @@
             <ul class="nav flex-column sub-menu">
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('job-posts.index') }}">Lists</a>
+                </li>
+            </ul>
+        </div>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" data-bs-toggle="collapse" href="#testimonials" aria-expanded="false"
+            aria-controls="testimonials">
+            <span class="menu-title">Testimonial</span>
+            <i class="menu-arrow"></i>
+            <i class="mdi mdi-format-list-bulleted menu-icon"></i>
+        </a>
+        <div class="collapse" id="testimonials">
+            <ul class="nav flex-column sub-menu">
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('testimonials.index') }}">Lists</a>
                 </li>
             </ul>
         </div>

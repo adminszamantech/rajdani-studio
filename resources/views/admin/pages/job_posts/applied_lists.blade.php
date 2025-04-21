@@ -66,6 +66,26 @@
                                                         <div class="col-1"><strong>:</strong></div>
                                                         <div class="col-8"><a href="{{ asset('/storage/admin/assets/images/cv/'.$unseen->cv) }}" target="_blank">Click for view</a></div>
                                                     </div>
+                                                    @if ($unseen->portfolio_type == 'pdf')
+                                                        <div class="row mb-3">
+                                                            <div class="col-3"><strong>Portfolio PDF</strong></div>
+                                                            <div class="col-1"><strong>:</strong></div>
+                                                            <div class="col-8"><a href="{{ asset('/storage/admin/assets/images/portfolio/'.$unseen->portfolio) }}" target="_blank">Click for view</a></div>
+                                                        </div>
+                                                    @elseif($unseen->portfolio_type == 'link')
+                                                        <div class="row mb-3">
+                                                            <div class="col-3"><strong>Portfolio Link</strong></div>
+                                                            <div class="col-1"><strong>:</strong></div>
+                                                            <div class="col-8">
+                                                                @php
+                                                                    $portfolios = json_decode($unseen->portfolio, true);
+                                                                @endphp
+                                                                @foreach ($portfolios as $item)
+                                                                    <a href="{{ $item }}" target="_blank">{{ $item }}</a><br>
+                                                                @endforeach
+                                                            </div>
+                                                        </div>
+                                                    @endif
                                                 </div>
                                                 <div class="gap-2">
                                                     <a href="{{ route('jobAppliedStatus',['id'=>$unseen->id,'status'=>'1']) }}" class="btn btn-sm btn-info" title="Seen"><i class="fa fa-eye"></i></a>
@@ -104,6 +124,11 @@
                                                         <div class="col-3"><strong>Apply Date</strong></div>
                                                         <div class="col-1"><strong>:</strong></div>
                                                         <div class="col-8">{{ Carbon\Carbon::parse($seen->created_at)->format('Y-m-d h:i A') ?? '' }}</div>
+                                                    </div>
+                                                    <div class="row mb-3">
+                                                        <div class="col-3"><strong>CV Link</strong></div>
+                                                        <div class="col-1"><strong>:</strong></div>
+                                                        <div class="col-8"><a href="{{ asset('/storage/admin/assets/images/cv/'.$seen->cv) }}" target="_blank">Click for view</a></div>
                                                     </div>
                                                     <div class="row mb-3">
                                                         <div class="col-3"><strong>CV Link</strong></div>

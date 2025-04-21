@@ -1,154 +1,211 @@
 @extends('frontend.layouts.main')
 @section('title', 'Home Page')
+@push('frontend-css')
+<style>
+    .carousel-control-prev-icon,
+    .carousel-control-next-icon {
+        filter: invert(28%) sepia(100%) saturate(4000%) hue-rotate(-50deg) brightness(100%) contrast(100%) !important;
+    }
 
+    /* .slider-img {
+        width: 100%;
+        object-fit: fill;
+    }
+    .profile-image {
+        width: 100%;
+        height: 100%;
+        object-fit: fill;
+    } */
+
+    @media screen and (min-width: 320px) and (max-width: 359px) {
+        .message-image{
+            width: 100% !important;
+            height: 250px !important;
+        }
+    }
+    @media screen and (min-width: 360px) and (max-width: 399px) {
+        .message-image{
+            width: 100% !important;
+            height: 280px !important;
+        }
+    }
+    @media screen and (min-width: 400px) and (max-width: 429px) {
+        .message-image{
+            width: 100% !important;
+            height: 300px !important;
+        }
+    }
+
+    @media screen and (min-width: 430px) and (max-width: 479px) {
+        .message-image{
+            width: 100% !important;
+            height: 320px !important;
+        }
+    }
+    @media screen and (min-width: 480px) and (max-width: 511px) {
+        .message-image{
+            width: 100% !important;
+            height: 380px !important;
+        }
+    }
+
+    @media screen and (min-width: 512px) and (max-width: 575px) {
+        .message-image{
+            width: 100% !important;
+            height: 400px !important;
+        }
+    }
+
+    @media screen and (min-width: 576px) and (max-width: 767px) {
+        .message-image{
+            width: 100% !important;
+            height: 380px !important;
+        }
+    }
+    @media screen and (min-width: 768px) and (max-width: 991px) {
+        .message-image{
+            width: 100% !important;
+            height: 340px !important;
+        }
+    }
+    @media screen and (min-width: 992px) and (max-width: 1199px) {
+        .message-image{
+            width: 100% !important;
+            height: 400px !important;
+        }
+    }
+
+    @media screen and (min-width: 1200px) and (max-width: 1399px) {
+        .message-image{
+            width: 100% !important;
+            height: 460px !important;
+        }
+    }
+
+    @media screen and (min-width: 1400px){
+        .message-image{
+            width: 100% !important;
+            height: 480px !important;
+        }
+    }
+
+
+    @media (max-width: 414px) {
+        .text-xs-mobile {
+            font-size: 0.7rem !important;
+            padding:0px 5px;
+            margin:0px;
+        }
+    }
+</style>
+@endpush
 @section('content')
-    <div class="rev_slider_wrapper fullscreen custom-controls">
-        <div id="rev_slider_2" class="rev_slider fullscreenbanner" style="display: none;" data-version="5.4.5">
-            <ul>
-                @foreach ($sliders as $slider)
-                    <li data-transition="fade">
-
-                        <!-- overlay -->
-                        <div class="opacity-medium bg-black z-index-1"></div>
-
-                        <img src="{{ asset('/storage/admin/assets/images/slider/' . $slider->image) }}" alt="slide3"
-                            class="rev-slidebg">
-
-                        <!-- start layer 1 -->
-
-                        <div class="tp-caption tp-resizeme alt-font font-weight-400 text-white text-uppercase text-right"
-                            data-x="['right','right','right','right']" data-y="center" data-voffset="[110,110,95,85]"
-                            data-hoffset="['30','30',30','30']" data-fontsize="[25,25,22,20]"
-                            data-lineheight="[20,20,18,18]" data-width="[650, 500, 400, 300]"
-                            data-whitespace="[nowrap, nowrap, nowrap, normal]"
-                            data-frames='[{
-                                "delay":0,
-                                "split":"chars",
-                                "splitdelay":0.05,
-                                "speed":2000,
-                                "frame":"0",
-                                "from":"y:[-100%];z:0;rZ:35deg;sX:1;sY:1;skX:0;skY:0;",
-                                "mask":"x:0px;y:0px;s:inherit;e:inherit;",
-                                "to":"o:1;",
-                                "ease":"Power4.easeInOut"
-                                },{
-                                "delay":"wait",
-                                "speed":300,
-                                "frame":"999",
-                                "to":"auto:auto;",
-                                "ease":"Power3.easeInOut"}]'
-                            data-splitout="none">{{ $slider->title ?? '' }}
-                        </div>
-                        <div class="tp-caption tp-resizeme alt-font font-weight-400 text-white text-uppercase text-right"
-                            data-x="['right','right','right','right']" data-y="center" data-voffset="[150, 150, 150, 150]"
-                            data-hoffset="['30','30',30','30']" data-fontsize="[20,20,18,16]"
-                            data-lineheight="[20,20,18,18]" data-width="[650, 500, 400, 300]"
-                            data-whitespace="[nowrap, nowrap, nowrap, normal]"
-                            data-frames='[{
-                                "delay":1400,
-                                "split":"chars",
-                                "splitdelay":0.05,
-                                "speed":2000,
-                                "frame":"0",
-                                "from":"y:[-100%];z:0;rZ:35deg;sX:1;sY:1;skX:0;skY:0;",
-                                "mask":"x:0px;y:0px;s:inherit;e:inherit;",
-                                "to":"o:1;",
-                                "ease":"Power4.easeInOut"
-                                },{
-                                "delay":"wait",
-                                "speed":300,
-                                "frame":"999",
-                                "to":"auto:auto;",
-                                "ease":"Power3.easeInOut"}]'
-                            data-splitout="none">{{ $slider->description ?? '' }}
-                        </div>
-                        <!-- end layer 1 -->
-                    </li>
-                @endforeach
-
-
-            </ul>
+    {{-- start slider section --}}
+    <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+        <div class="carousel-inner">
+            @foreach ($sliders as $index => $slider)
+                <div class="carousel-item {{ $index == 0 ? 'active' : '' }}">
+                    <a href="{{ asset('/storage/admin/assets/images/slider/' . $slider->image) }}">
+                        <img class="d-block w-100 slider-img"  src="{{ asset('/storage/admin/assets/images/slider/' . $slider->image) }}" alt="Slide {{ $index + 1 }}">
+                    </a>
+                </div>
+            @endforeach
         </div>
+        <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
     </div>
+    {{-- end slider section --}}
+
 
     <!-- start about section -->
     <section>
         <div class="container">
+            <h6 class="my-3 text-uppercase text-center text-danger">
+                About Us
+                <hr class="mx-auto bg-danger" style="width: 25%; ">
+            </h6>
+
             @foreach ($profiles as $profile)
-                <div class="row align-items-center">
-                    <div class="col-lg-6 sm-margin-30px-bottom">
-                        <div class="about-block">
-                            <div class="image">
-                                @if ($profile->type == 'image')
-                                    <img class="w-100"
-                                        src="{{ asset('/storage/admin/assets/images/profile/' . $profile->image_video) }}"
-                                        alt="image" />
-                                @elseif($profile->type == 'video')
-                                    <video width="100%" controls>
-                                        <source
-                                            src="{{ asset('/storage/admin/assets/images/profile/' . $profile->image_video) }}"
-                                            type="video/mp4">
-                                        browser not support.
-                                    </video>
-                                @endif
-                            </div>
-                        </div>
+            <div class="row align-items-center">
+                <div class="col-md-6 pt-4">
+                    <div class="image">
+                        @if ($profile->type == 'image')
+                            <a href="{{ asset('/storage/admin/assets/images/profile/' . $profile->image_video) }}">
+                                <img class="profile-image img-thumbnail"
+                                src="{{ asset('/storage/admin/assets/images/profile/' . $profile->image_video) }}"
+                                alt="image" />
+                            </a>
+                        @elseif($profile->type == 'video')
+                            <video width="100%" controls>
+                                <source
+                                    src="{{ asset('/storage/admin/assets/images/profile/' . $profile->image_video) }}"
+                                    type="video/mp4">
+                                browser not support.
+                            </video>
+                        @endif
                     </div>
-                    <div class="col-lg-6">
-                        <div class="padding-80px-left md-padding-50px-left sm-no-padding-left">
-                            <h3
-                                class="font-size15 md-font-size14 sm-font-size13 text-uppercase margin-15px-bottom md-margin-10px-bottom font-weight-900 letter-spacing-3 word-spacing-3 text-theme-color">
-                                About Us</h3>
-                            <h4
-                                class="font-size40 md-font-size36 sm-font-size30 xs-font-size26 font-weight-500 margin-25px-bottom md-margin-25px-bottom sm-margin-15px-bottom">
-                                {{ $profile->title ?? '' }}</h4>
-                            <div>
-                                {!! \Illuminate\Support\Str::limit(strip_tags($profile->description), 300) !!}
-                            </div>
-                            <div class="my-3">
-                                <a href="{{ route('home.profile') }}" class="btn btn-md btn-outline-danger" >Read More</a>
-                            </div>
+                </div>
+                <div class="col-md-6 pt-4">
+                    <div class="">
+                        <h4 class="">{{ $profile->title ?? '' }}</h4>
+                        <div class="text-justify">
+                            {!! \Illuminate\Support\Str::limit($profile->description, 500) !!}
+                        </div>
+                        <div class="my-3">
+                            <a href="{{ route('home.profile') }}" class="btn btn-md btn-outline-danger" >Read More</a>
                         </div>
                     </div>
                 </div>
+            </div>
             @endforeach
         </div>
+
     </section>
     <!-- end about section -->
 
     {{-- start message section --}}
     <div class="container">
+        <h6 class="my-3 text-uppercase text-center text-danger">
+           Message
+            <hr class="mx-auto bg-danger" style="width: 25%; ">
+        </h6>
+
+
         @foreach ($messages as $message)
-            <div class="row align-items-center">
-                <div class="col-lg-6 sm-margin-30px-bottom">
-                    <div class=" ">
-                        <h3
-                            class="font-size15 md-font-size14 sm-font-size13 text-uppercase margin-15px-bottom md-margin-10px-bottom font-weight-900 letter-spacing-3 word-spacing-3 text-theme-color">
-                            Message</h3>
-                        <h4
-                            class="font-size40 md-font-size36 sm-font-size30 xs-font-size26 font-weight-500 margin-25px-bottom md-margin-25px-bottom sm-margin-15px-bottom">
-                            {{ $message->title ?? '' }}</h4>
-                        <div>
+
+            <div class="row align-items-center flex-column-reverse flex-md-row">
+                <div class="col-md-6 pt-4">
+                    <div class="">
+                        <h4 class="">{{ $message->title ?? '' }}</h4>
+                        <div class="text-justify">
                             {!! $message->description !!}
                         </div>
                     </div>
+
                 </div>
-                <div class="col-lg-6">
-                    <div class="about-block" style="padding-left: 75px;">
-                        <div class="image">
-                            @if ($message->type == 'image')
-                                <img class="w-100"
+                <div class="col-md-6 pt-4">
+                    <div class="image">
+                        @if ($message->type == 'image')
+                            <a href="{{ asset('/storage/admin/assets/images/message/' . $message->image_video) }}">
+                                <img class="message-image img-thumbnail"
+                                style="width: 100%;height:100%; object-fit:fill;"
+                                src="{{ asset('/storage/admin/assets/images/message/' . $message->image_video) }}"
+                                alt="image" />
+                            </a>
+                        @elseif($message->type == 'video')
+                            <video width="100%" controls>
+                                <source
                                     src="{{ asset('/storage/admin/assets/images/message/' . $message->image_video) }}"
-                                    alt="image" />
-                            @elseif($message->type == 'video')
-                                <video width="100%" controls>
-                                    <source
-                                        src="{{ asset('/storage/admin/assets/images/message/' . $message->image_video) }}"
-                                        type="video/mp4">
-                                    browser not support.
-                                </video>
-                            @endif
-                        </div>
+                                    type="video/mp4">
+                                browser not support.
+                            </video>
+                        @endif
                     </div>
                 </div>
             </div>
@@ -156,19 +213,21 @@
     </div>
     {{-- end message section --}}
 
-    <!-- start testimonial section-->
+
+    <!-- start projects section-->
     <section>
         <div class="container lg-container">
             <div class="margin-50px-bottom xs-margin-30px-bottom text-center">
-                <h3
-                    class="font-size13 text-uppercase margin-15px-bottom xs-margin-5px-bottom font-weight-900 letter-spacing-3 word-spacing-3 text-theme-color">
-                    Category Wise Latest Projects</h3>
-                </h4>
+                <h6 class="my-3 text-uppercase text-center text-danger">
+                    Category Wise Latest Projects
+                     <hr class="mx-auto bg-danger" style="width: 25%; ">
+                 </h6>
+
             </div>
             <nav class="d-flex justify-content-center">
                 <div class="nav nav-tabs" id="nav-tab" role="tablist">
                     @foreach ($projectCats as $index => $projectCat)
-                        <a class="nav-item nav-link {{ request()->get('tab') == $projectCat->id || (request()->get('tab') === null && $index === 0) ? 'active' : '' }}"
+                        <a class="nav-item nav-link text-xs-mobile fs-md-5  {{ request()->get('tab') == $projectCat->id || (request()->get('tab') === null && $index === 0) ? 'active' : '' }}"
                            id="nav-projectCat-{{ $projectCat->id }}-tab"
                            data-toggle="tab"
                            href="#nav-projectCat-{{ $projectCat->id }}"
@@ -176,6 +235,7 @@
                            aria-controls="nav-projectCat-{{ $projectCat->id }}"
                            aria-selected="{{ request()->get('tab') == $projectCat->id || (request()->get('tab') === null && $index === 0) ? 'true' : 'false' }}">
                             {{ $projectCat->name }}
+
                         </a>
                     @endforeach
                 </div>
@@ -187,7 +247,7 @@
 
                             <div class="row mt-5">
                                 @foreach (cat_wise_projects($projectCat->id) as $project)
-                                <div class="col-lg-4 col-md-12 sm-margin-25px-bottom items">
+                                <div class="col-6 col-sm-6 col-md-6 col-lg-4 sm-margin-25px-bottom items">
                                         <div class="portfolio-block position-relative overflow-hidden margin-25px-bottom">
                                             <div class="item-img">
                                                 @if ($project->type == 'image')
@@ -221,23 +281,84 @@
             </div>
         </div>
     </section>
+    <!-- end projects section-->
+
+    <!-- start testimonial section-->
+    <section>
+        <div class="container lg-container">
+            <div class="margin-50px-bottom xs-margin-30px-bottom text-center">
+
+                <h6 class="my-3 text-uppercase text-center text-danger">
+                    Testimonials</h6>
+                <p class="text-danger">What our clients say</p>
+                <hr class="mx-auto bg-danger" style="width: 25%; ">
+            </div>
+
+            <div class="owl-carousel owl-theme client">
+                @foreach ($testimonials as $testimonial)
+                        @if($testimonial->type == 'video')
+                            <div class="client-block">
+
+                                <video style="width=100%;height:125px" controls>
+                                    <source
+                                        src="{{ asset('/storage/admin/assets/images/testimonial/' . $testimonial->image_video) }}"
+                                        type="video/mp4">
+                                    browser not support.
+                                </video>
+                                <p class="xs-margin-15px-bottom">{!! strip_tags($testimonial->comment) ?? '' !!}</p>
+                                <h5
+                                    class="margin-5px-bottom xs-no-margin-bottom font-size20 md-font-size18 xs-font-size16 font-weight-600 text-theme-color">
+                                    {{ $testimonial->name ?? '' }}</h5>
+                                <div class="font-size16 xs-font-size14">{{ $testimonial->designation ?? '' }}</div>
+                            </div>
+                        @else
+                            <div class="client-block">
+                                <div class="icon">
+                                    <i class="fa fa-quote-right"></i>
+                                </div>
+                                <div class="client-img">
+                                    <a href="{{ asset('/storage/admin/assets/images/testimonial/'.$testimonial->image_video) }}">
+                                        <img src="{{ asset('/storage/admin/assets/images/testimonial/'.$testimonial->image_video) }}" alt="image" />
+                                    </a>
+                                </div>
+
+                                <ul class="rating">
+                                    @for ($i = 1; $i <= 5; $i++)
+                                        @if ($i <= $testimonial->review)
+                                            <li class="star-rate"><i class="fa fa-star" aria-hidden="true"></i></li>
+                                        @else
+                                            <li><i class="fa fa-star" aria-hidden="true"></i></li>
+                                        @endif
+                                    @endfor
+                                </ul>
+                                <p class="xs-margin-15px-bottom">{!! strip_tags($testimonial->comment) ?? '' !!}</p>
+                                <h5
+                                    class="margin-5px-bottom xs-no-margin-bottom font-size20 md-font-size18 xs-font-size16 font-weight-600 text-theme-color">
+                                    {{ $testimonial->name ?? '' }}</h5>
+                                <div class="font-size16 xs-font-size14">{{ $testimonial->designation ?? '' }}</div>
+                            </div>
+                        @endif
+
+
+                @endforeach
+
+            </div>
+        </div>
+    </section>
     <!-- end testimonial section-->
+
     <!-- start clients section -->
     <div class="section-clients bg-light-gray">
         <div class="container">
-            <div class="owl-carousel owl-theme clients" id="clients">
-                <div class="item"><img alt="partner-image"
-                        src="{{ asset('/storage/frontend/img/partners/client-01.png') }}"></div>
-                <div class="item"><img alt="partner-image"
-                        src="{{ asset('/storage/frontend/img/partners/client-02.png') }}"></div>
-                <div class="item"><img alt="partner-image"
-                        src="{{ asset('/storage/frontend/img/partners/client-03.png') }}"></div>
-                <div class="item"><img alt="partner-image"
-                        src="{{ asset('/storage/frontend/img/partners/client-04.png') }}"></div>
-                <div class="item"><img alt="partner-image"
-                        src="{{ asset('/storage/frontend/img/partners/client-05.png') }}"></div>
-                <div class="item"><img alt="partner-image"
-                        src="{{ asset('/storage/frontend/img/partners/client-06.png') }}"></div>
+            <div class="owl-carousel owl-theme " id="clients"> <!-- class add clients for image light  -->
+                @foreach ($clients as $client)
+                    <div class="item">
+                        <a href="{{ asset('/storage/frontend/img/client/'.$client->image) }}">
+                            <img alt="partner-image" src="{{ asset('/storage/frontend/img/client/'.$client->image) }}">
+                        </a>
+
+                    </div>
+                @endforeach
             </div>
         </div>
     </div>

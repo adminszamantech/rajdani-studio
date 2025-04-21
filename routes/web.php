@@ -1,17 +1,19 @@
 <?php
 
+use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Artisan;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\Admin\ClientController;
+use App\Http\Controllers\Admin\SliderController;
 use App\Http\Controllers\Admin\ContactController;
-use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\JobPostController;
 use App\Http\Controllers\Admin\MessageController;
-use App\Http\Controllers\Admin\ProfileController as AdminProfileController;
-use App\Http\Controllers\Admin\ProjectCategoryController;
 use App\Http\Controllers\Admin\ProjectController;
 use App\Http\Controllers\Admin\SettingController;
-use App\Http\Controllers\Admin\SliderController;
-use App\Http\Controllers\HomeController;
-use Illuminate\Support\Facades\Artisan;
-use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\TestimonialController;
+use App\Http\Controllers\Admin\ProjectCategoryController;
+use App\Http\Controllers\Admin\ProfileController as AdminProfileController;
 
 
 // frontend route
@@ -30,8 +32,10 @@ Route::middleware('auth')->group(function () {
     Route::resource('project-categories',ProjectCategoryController::class);
     Route::resource('projects',ProjectController::class);
     Route::resource('sliders',SliderController::class);
+    Route::resource('clients',ClientController::class);
     Route::resource('messages',MessageController::class);
     Route::resource('profiles',AdminProfileController::class);
+    Route::resource('testimonials',TestimonialController::class);
     Route::resource('contacts',ContactController::class);
     Route::resource('job-posts',JobPostController::class);
     Route::get('job-applied-lists/{jobPost}',[JobPostController::class,'job_applied_lists'])->name('jobAppliedLists');

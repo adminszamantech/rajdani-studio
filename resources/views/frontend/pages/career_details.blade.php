@@ -56,7 +56,7 @@
     <!-- Apply Job Modal -->
     <div class="modal fade" id="applyJobModalCenter" tabindex="-1" role="dialog"
         aria-labelledby="applyJobModalCenterCenterTitle" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
             <div class="modal-content">
                 <div class="modal-header">
                     <h6 class="modal-title" id="exampleModalLongTitle">{{ $jobPost->title . ' Apply' ?? '' }}</h6>
@@ -67,32 +67,43 @@
                 <form action="{{ route('home.jobApply') }}" method="post" enctype="multipart/form-data">
                     @csrf
                     <div class="modal-body">
-                        <div class="row">
-                            <div class="col-12">
-                                <div class="">
-                                    <input type="hidden" name="job_post_id" value="{{ $jobPost->id }}">
-                                    <div class="form-group">
-                                        <label for="exampleInputName1">Full Name</label>
-                                        <input type="text" name="full_name" class="form-control"
-                                            id="exampleInputName1" placeholder="Full Name" required>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="exampleInputName1">Email</label>
-                                        <input type="email" name="email" class="form-control"
-                                            id="exampleInputName1" placeholder="Email" required>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="exampleInputName1">Phone</label>
-                                        <input type="tel" name="phone" class="form-control" id="exampleInputName1" placeholder="Phone" required pattern="^\d{11}$" title="Phone number must be exactly 11 digits">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="exampleInputName1">Resume / CV</label>
-                                        <input type="file" name="cv" class="form-control"
-                                            id="exampleInputName1" placeholder="Resume / CV" required accept=".pdf, application/pdf">
-                                    </div>
-                                </div>
+                        <div class="form-row">
+                            <input type="hidden" name="job_post_id" value="{{ $jobPost->id }}">
+                            <div class="form-group col-md-6">
+                                <label for="exampleInputName1">Full Name</label>
+                                <input type="text" name="full_name" class="form-control"
+                                    id="exampleInputName1" placeholder="Full Name" required>
                             </div>
-                        </div>
+                            <div class="form-group col-md-6">
+                                <label for="exampleInputName1">Email</label>
+                                <input type="email" name="email" class="form-control"
+                                    id="exampleInputName1" placeholder="Email" required>
+                            </div>
+                          </div>
+                        <div class="form-row">
+
+                            <div class="form-group col-md-6">
+                                <label for="exampleInputName1">Phone</label>
+                                <input type="tel" name="phone" class="form-control" id="exampleInputName1" placeholder="Phone" required pattern="^\d{11}$" title="Phone number must be exactly 11 digits">
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="exampleInputName1">Resume / CV</label>
+                                <input type="file" name="cv" class="form-control"
+                                    id="exampleInputName1" placeholder="Resume / CV" required accept=".pdf, application/pdf">
+                            </div>
+                          </div>
+                        <div class="form-row">
+
+                            <div class="form-group col-md-12">
+                                <label for="exampleInputName1">Add Portfolio</label>
+                                <select name="portfolio_type" id="" class="form-control portfolio-type">
+                                    <option value="">Select Portfolio</option>
+                                    <option value="pdf">PDF</option>
+                                    <option value="link">Link</option>
+                                </select>
+                            </div>
+                          </div>
+                          <div class="pdf_link_append"></div>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -103,3 +114,46 @@
         </div>
     </div>
 @endsection
+@push('frontend-script')
+<script>
+    $('.portfolio-type').on('change', function() {
+        var selectedValue = $(this).val();
+        $('.pdf_link_append').empty();
+        if (selectedValue === 'pdf') {
+            $('.pdf_link_append').html(`
+                <div class="form-group">
+                    <label for="exampleInputName1">Portfolio PDF</label>
+                    <input type="file" name="portfolio" class="form-control" placeholder="Upload PDF" required accept=".pdf, application/pdf">
+                </div>
+            `);
+        } else if (selectedValue === 'link') {
+            $('.pdf_link_append').html(`
+                <div class="form-group">
+                    <label for="exampleInputName1">Portfolio Link</label>
+                    <div class="row">
+                        <div class="col-sm-8"> <input type="text" name="portfolio[]" class="form-control" placeholder="Enter your link" required></div>
+                        <div class="col-sm-4"><button type="button" class="btn btn-md btn-info add-more w-100">+Add</button></div>
+
+                    </div>
+                    <div class="link-add"></div>
+                </div>
+
+            `);
+        }
+    });
+
+
+    $(document).on('click', '.add-more', function() {
+        $('.link-add').append(`
+            <div class="row">
+                <div class="col-sm-8"> <input type="text" name="portfolio[]" class="form-control" placeholder="Enter your link" required></div>
+                <div class="col-sm-4"><button type="button" class="btn btn-md btn-danger remove-item w-100">-Remove</button></div>
+            </div>
+        `);
+    });
+
+    $(document).on('click', '.remove-item', function() {
+        $(this).closest('.row').remove();
+    });
+</script>
+@endpush

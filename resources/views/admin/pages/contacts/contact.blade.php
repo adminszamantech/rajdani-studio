@@ -69,7 +69,7 @@
                                     @if (isset($contact))
                                         <div class="modal fade" id="viewcontactModal-{{ $contact->id }}" tabindex="-1"
                                             aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                            <div class="modal-dialog">
+                                            <div class="modal-dialog modal-xl">
                                                 <form action="{{ route('contacts.update',$contact->id) }}" method="post"
                                                     enctype="multipart/form-data">
                                                     @csrf

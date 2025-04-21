@@ -17,4 +17,8 @@ class Project extends Model
     public function project_category(){
         return $this->belongsTo(ProjectCategory::class)->select('id','name','is_active');
     }
+    public function project_images()
+    {
+        return $this->hasMany(ProjectImage::class);
+    }
 }

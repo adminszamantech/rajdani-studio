@@ -26,6 +26,7 @@
     <link rel="stylesheet" href="{{ asset('/storage/frontend/css/rev_slider/navigation.css') }}">
     <link rel="stylesheet" href="{{ asset('/storage/frontend/search/search.css') }}" />
     <link href="{{ asset('/storage/frontend/css/styles.css') }}" rel="stylesheet" />
+    @stack('frontend-css')
 </head>
 
 <body>
@@ -62,6 +63,6 @@
     <script src="{{ asset('/storage/frontend/js/rev_slider/extensions/revolution.extension.slideanims.min.js') }}"></script>
     <script src="{{ asset('/storage/frontend/js/rev_slider/extensions/revolution.extension.video.min.js') }}"></script>
     <script src="{{ asset('/storage/frontend/js/main.js') }}"></script>
-
+    @stack('frontend-script')
 </body>
 </html>
