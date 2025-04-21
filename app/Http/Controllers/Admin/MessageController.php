@@ -27,7 +27,7 @@ class MessageController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.pages.messages.create');
     }
 
     /**
@@ -64,7 +64,8 @@ class MessageController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $message = Message::find($id);
+        return view('admin.pages.messages.edit',compact('message'));
     }
 
     /**

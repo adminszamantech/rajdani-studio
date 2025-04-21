@@ -3,7 +3,7 @@
 
 @section('content')
 
-    <section class="page-title-section bg-img cover-background" data-overlay-dark="75" data-background="{{ asset('/storage/frontend/img/banner/page-title.jpg') }}">
+    {{-- <section class="page-title-section bg-img cover-background" data-overlay-dark="75" data-background="{{ asset('/storage/frontend/img/banner/page-title.jpg') }}">
         <div class="container">
 
             <div class="row">
@@ -19,7 +19,7 @@
             </div>
 
         </div>
-    </section>
+    </section> --}}
 
     <section>
         <div class="container">
@@ -102,6 +102,6 @@
         </div>
     </section>
 
-    <iframe class="map-height" id="gmap_canvas" src="https://maps.google.com/maps?q=dhaka&amp;t=&amp;z=13&amp;ie=UTF8&amp;iwloc=&amp;output=embed" scrolling="no" marginheight="0" marginwidth="0"></iframe>
+    <iframe class="map-height" id="gmap_canvas" src="https://maps.google.com/maps?q=৯৩, কাজী নজরুল ইসলাম এভিনিউ, কারওয়ান বাজার, ঢাকা-১২১৫&amp;t=&amp;z=13&amp;ie=UTF8&amp;iwloc=&amp;output=embed" scrolling="no" marginheight="0" marginwidth="0"></iframe>
 
 @endsection

@@ -11,6 +11,8 @@ class JobApply extends Model
         'email',
         'phone',
         'cv',
+        'portfolio',
+        'portfolio_type',
         'seen'
     ];
 }

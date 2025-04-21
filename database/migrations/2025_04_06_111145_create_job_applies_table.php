@@ -18,6 +18,8 @@ return new class extends Migration
             $table->string('email');
             $table->string('phone');
             $table->string('cv');
+            $table->text('portfolio')->nullable();
+            $table->enum('portfolio_type',['pdf','link'])->nullable();
             $table->integer('seen')->default(false)->comment("0=unseen,1=seen,2=shortlist");
             $table->timestamps();
 

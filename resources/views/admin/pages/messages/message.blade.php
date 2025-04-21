@@ -19,8 +19,7 @@
             <div class="card">
                 <div class="card-body">
                     <div class="mb-5 d-flex justify-content-end">
-                        <button class="btn btn-md btn-gradient-dark btn-icon-text" data-bs-toggle="modal"
-                            data-bs-target="#addmessageModal">Add Message</button>
+                        <a href="{{ route('messages.create') }}" class="btn btn-md btn-gradient-dark btn-icon-text">Add Message</a>
                     </div>
                     <div class="table-responsive">
                         <table class="table table-striped">
@@ -63,10 +62,9 @@
                                         </td>
                                         <td>
                                             <div class="d-flex gap-2 justify-content-center">
-                                                <button class="btn btn-gradient-primary btn-rounded btn-icon" data-bs-toggle="modal"
-                                                    data-bs-target="#editmessageModal-{{ $message->id }}">
+                                                <a href="{{ route('messages.edit',$message->id) }}" class="btn btn-gradient-primary btn-rounded btn-icon d-flex justify-content-center align-items-center">
                                                     <i class="mdi mdi-pencil-outline"></i>
-                                                </button>
+                                                </a>
                                                 <form id="messageDeleteForm-{{ $message->id }}"
                                                     action="{{ route('messages.destroy', $message->id) }}" method="POST">
                                                     @csrf
@@ -80,97 +78,7 @@
                                             </div>
                                         </td>
                                     </tr>
-                                    <!-- edit Modal -->
-                                    @if (isset($message))
-                                        <div class="modal fade" id="editmessageModal-{{ $message->id }}" tabindex="-1"
-                                            aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                            <div class="modal-dialog modal-lg">
-                                                <form action="{{ route('messages.update',$message->id) }}" method="post"
-                                                    enctype="multipart/form-data">
-                                                    @csrf
-                                                    @method('put')
-                                                    <div class="modal-content">
-                                                        <div class="modal-header">
-                                                            <h5 class="modal-title" id="exampleModalLabel">Edit Message</h5>
-                                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                                aria-label="Close"></button>
-                                                        </div>
-                                                        <div class="modal-body">
-                                                            <div class="row">
-                                                                <div class="col-12">
-                                                                    <div class="">
-                                                                        <div class="form-group">
-                                                                            <label for="exampleInputName1">Title</label>
-                                                                            <input type="text" name="title"
-                                                                                class="form-control" value="{{ $message->title ?? '' }}" id="exampleInputName1"
-                                                                                placeholder="Title" required>
-                                                                        </div>
-                                                                        <div class="form-group">
-                                                                            <label
-                                                                                for="exampleInputEmail3">Description</label>
-                                                                            <textarea name="description" class="form-control summernote" placeholder="Description" required>{!! $message->description !!}</textarea>
-                                                                        </div>
-                                                                        <div class="form-group">
-                                                                            <div class="py-2 d-flex justify-content-center">
-                                                                                @if ($message->type == 'image')
-                                                                                    <img class="w-50" src="{{ asset('/storage/admin/assets/images/message/' . $message->image_video) }}" alt="image">
-                                                                                @elseif($message->type == 'video')
-                                                                                    <video class="w-100" controls>
-                                                                                        <source
-                                                                                            src="{{ asset('/storage/admin/assets/images/message/' . $message->image_video) }}"
-                                                                                            type="video/mp4">
-                                                                                        browser not support.
-                                                                                    </video>
-                                                                                @else
-                                                                                @endif
 
-                                                                            </div>
-                                                                            <label for="exampleInputName1">File Type</label>
-                                                                            <select class="form-select select-file-type"
-                                                                                name="type"
-                                                                                id="exampleFormControlSelect2">
-                                                                                <option value="">Select File Type
-                                                                                </option>
-                                                                                <option value="image">Image</option>
-                                                                                <option value="video">Video</option>
-                                                                            </select>
-                                                                        </div>
-                                                                        <div class="form-group file-image"
-                                                                            style="display: none">
-                                                                            <label>Image File upload</label>
-                                                                            <input type="file" name="image"
-                                                                                class="form-control" accept="image/*">
-                                                                        </div>
-
-                                                                        <div class="form-group file-video"
-                                                                            style="display: none">
-                                                                            <label>Video File upload</label>
-                                                                            <input type="file" name="video"
-                                                                                class="form-control" accept="video/*">
-                                                                        </div>
-                                                                        <div class="form-group">
-                                                                            <label for="exampleInputName1">Status</label>
-                                                                            <select class="form-select"
-                                                                                name="is_active"
-                                                                                id="exampleFormControlSelect2">
-                                                                                <option value="1" @if($message->is_active == true) selected @endif>Active</option>
-                                                                                <option value="0" @if($message->is_active == false) selected @endif>Inactive</option>
-                                                                            </select>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="modal-footer">
-                                                            <button type="button" class="btn btn-secondary"
-                                                                data-bs-dismiss="modal">Close</button>
-                                                            <button type="submit" class="btn btn-primary">Update</button>
-                                                        </div>
-                                                    </div>
-                                                </form>
-                                            </div>
-                                        </div>
-                                    @endif
                                 @empty
                                     <tr class="text-center">
                                         <td class="text-center" colspan="7">Not Found</td>
@@ -184,59 +92,7 @@
             </div>
         </div>
     </div>
-    <!-- add Modal -->
-    <div class="modal fade" id="addmessageModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg">
-            <form action="{{ route('messages.store') }}" method="post" enctype="multipart/form-data">
-                @csrf
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Add Message</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        <div class="row">
-                            <div class="col-12">
-                                <div class="">
-                                    <div class="form-group">
-                                        <label for="exampleInputName1">Title</label>
-                                        <input type="text" name="title" class="form-control" id="exampleInputName1"
-                                            placeholder="Title" required>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="exampleInputEmail3">Description</label>
-                                        <textarea name="description" class="form-control summernote" placeholder="Description" required></textarea>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="exampleInputName1">File Type</label>
-                                        <select class="form-select select-file-type" name="type"
-                                            id="exampleFormControlSelect2" required>
-                                            <option value="">Select File Type</option>
-                                            <option value="image">Image</option>
-                                            <option value="video">Video</option>
-                                        </select>
-                                    </div>
-                                    <div class="form-group file-image" style="display: none">
-                                        <label>Image File upload</label>
-                                        <input type="file" name="image" class="form-control" accept="image/*">
-                                    </div>
 
-                                    <div class="form-group file-video" style="display: none">
-                                        <label>Video File upload</label>
-                                        <input type="file" name="video" class="form-control" accept="video/*">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-primary">Save</button>
-                    </div>
-                </div>
-            </form>
-        </div>
-    </div>
 @endsection
 
 @push('admin_scripts')
@@ -250,7 +106,7 @@
             $('.summernote').summernote({
                 placeholder: 'Type Here...',
                 tabsize: 2,
-                height: 250,
+                height: 150,
                 toolbar: [
                     // Basic style options
                     ['style', ['bold', 'italic', 'underline', 'clear']],
