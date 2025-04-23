@@ -29,6 +29,23 @@ class Services{
     }
 
 
+    public function sliderImageUpload($file,$folder,$width,$height){
+        try {
+
+           if(!Storage::disk('public')->exists($folder)){
+               Storage::disk('public')->makeDirectory($folder);
+           }
+           $imageName = rand(1000, 9999) . time() . "." . strtolower($file->getClientOriginalExtension());
+           $image = Image::make($file->getContent());
+           $image->resize($width, $height);
+           Storage::disk('public')->put($folder . $imageName, $image->encode());
+           return $imageName;
+        } catch (\Throwable $th) {
+           return $th->getMessage();
+        }
+   }
+
+
     public function pdfUpload($file,$folder){
          try {
             if(!Storage::disk('public')->exists($folder)){

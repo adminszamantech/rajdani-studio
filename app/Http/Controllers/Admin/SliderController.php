@@ -36,9 +36,9 @@ class SliderController extends Controller
     public function store(Request $request)
     {
         if ($request->hasFile('image')){
-            $width = 1920; $height = 1080;
+            $width = 2924; $height = 1701;
             $folder = 'admin/assets/images/slider/';
-            $data['image'] = $this->services->imageUpload($request->file('image'), $folder,$width,$height);
+            $data['image'] = $this->services->sliderImageUpload($request->file('image'), $folder,$width,$height);
         }
         $data['title'] = ucwords($request->title);
         $data['description'] = ucfirst($request->description);
@@ -71,10 +71,10 @@ class SliderController extends Controller
     {
         $slider = Slider::find($id);
         if ($request->hasFile('image')){
-            $width = 1920; $height = 1080;
+            $width = 2924; $height = 1701;
             $folder = 'admin/assets/images/slider/';
             $this->services->imageDestroy($slider->image,'admin/assets/images/slider/');
-            $data['image'] = $this->services->imageUpload($request->file('image'), $folder,$width,$height);
+            $data['image'] = $this->services->sliderImageUpload($request->file('image'), $folder,$width,$height);
         }
         $data['title'] = ucwords($request->title);
         $data['description'] = ucfirst($request->description);
