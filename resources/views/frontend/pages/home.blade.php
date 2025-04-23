@@ -6,7 +6,6 @@
     .carousel-control-next-icon {
         filter: invert(28%) sepia(100%) saturate(4000%) hue-rotate(-50deg) brightness(100%) contrast(100%) !important;
     }
-
     /* .slider-img {
         width: 100%;
         object-fit: fill;
@@ -19,73 +18,62 @@
 
     @media screen and (min-width: 320px) and (max-width: 359px) {
         .message-image{
-            width: 100% !important;
             height: 250px !important;
         }
     }
     @media screen and (min-width: 360px) and (max-width: 399px) {
         .message-image{
-            width: 100% !important;
             height: 280px !important;
         }
     }
     @media screen and (min-width: 400px) and (max-width: 429px) {
         .message-image{
-            width: 100% !important;
             height: 300px !important;
         }
     }
 
     @media screen and (min-width: 430px) and (max-width: 479px) {
         .message-image{
-            width: 100% !important;
             height: 320px !important;
         }
     }
     @media screen and (min-width: 480px) and (max-width: 511px) {
         .message-image{
-            width: 100% !important;
             height: 380px !important;
         }
     }
 
     @media screen and (min-width: 512px) and (max-width: 575px) {
         .message-image{
-            width: 100% !important;
             height: 400px !important;
         }
     }
 
     @media screen and (min-width: 576px) and (max-width: 767px) {
         .message-image{
-            width: 100% !important;
             height: 380px !important;
         }
     }
     @media screen and (min-width: 768px) and (max-width: 991px) {
         .message-image{
-            width: 100% !important;
             height: 340px !important;
         }
     }
     @media screen and (min-width: 992px) and (max-width: 1199px) {
         .message-image{
-            width: 100% !important;
             height: 400px !important;
         }
     }
 
     @media screen and (min-width: 1200px) and (max-width: 1399px) {
         .message-image{
-            width: 100% !important;
             height: 460px !important;
         }
     }
 
     @media screen and (min-width: 1400px){
         .message-image{
-            width: 100% !important;
-            height: 480px !important;
+            height: 815px !important;
         }
     }
 
@@ -179,35 +167,35 @@
 
         @foreach ($messages as $message)
 
-            <div class="row align-items-center flex-column-reverse flex-md-row">
-                <div class="col-md-6 pt-4">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="row d-flex justify-content-center pt-4">
+                        <div class="col-6 col-sm-6 col-md-4 col-lg-3 image">
+                            @if ($message->type == 'image')
+                                <a href="{{ asset('/storage/admin/assets/images/message/' . $message->image_video) }}">
+                                    <img src="{{ asset('/storage/admin/assets/images/message/' . $message->image_video) }}" class="img-fluid rounded-circle" alt="Profile Image">
+                                </a>
+                            @elseif($message->type == 'video')
+                                <video width="100%" controls>
+                                    <source
+                                        src="{{ asset('/storage/admin/assets/images/message/' . $message->image_video) }}"
+                                        type="video/mp4">
+                                    browser not support.
+                                </video>
+                            @endif
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-12 pt-5">
                     <div class="">
-                        <h4 class="">{{ $message->title ?? '' }}</h4>
+                        <h4 class="text-center">{{ $message->title ?? '' }}</h4>
                         <div class="text-justify">
                             {!! $message->description !!}
                         </div>
                     </div>
+                </div>
 
-                </div>
-                <div class="col-md-6 pt-4">
-                    <div class="image">
-                        @if ($message->type == 'image')
-                            <a href="{{ asset('/storage/admin/assets/images/message/' . $message->image_video) }}">
-                                <img class="message-image img-thumbnail"
-                                style="width: 100%;height:100%; object-fit:fill;"
-                                src="{{ asset('/storage/admin/assets/images/message/' . $message->image_video) }}"
-                                alt="image" />
-                            </a>
-                        @elseif($message->type == 'video')
-                            <video width="100%" controls>
-                                <source
-                                    src="{{ asset('/storage/admin/assets/images/message/' . $message->image_video) }}"
-                                    type="video/mp4">
-                                browser not support.
-                            </video>
-                        @endif
-                    </div>
-                </div>
             </div>
         @endforeach
     </div>

@@ -131,15 +131,14 @@
             </h6>
 
             @foreach ($messages as $message)
-                <div class="row d-flex justify-content-center">
-                    <div class="col-md-12">
-                        <div class="image">
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="row d-flex justify-content-center pt-4">
+                        <div class="col-6 col-sm-6 col-md-4 col-lg-3 image">
                             @if ($message->type == 'image')
                                 <a href="{{ asset('/storage/admin/assets/images/message/' . $message->image_video) }}">
-                                    <img class="message-image img-thumbnail"
-                                    style="width: 100%;height:100%;object-fit:fill;"
-                                    src="{{ asset('/storage/admin/assets/images/message/' . $message->image_video) }}"
-                                    alt="image" />
+                                    <img src="{{ asset('/storage/admin/assets/images/message/' . $message->image_video) }}" class="img-fluid rounded-circle" alt="Profile Image">
                                 </a>
                             @elseif($message->type == 'video')
                                 <video width="100%" controls>
@@ -150,15 +149,20 @@
                                 </video>
                             @endif
                         </div>
-                        <div class="my-5">
-                            <h4 class="text-center">{{ $message->title ?? '' }}</h4>
-                            <div class="text-justify">
-                                {!! $message->description !!}
-                            </div>
+                    </div>
+                </div>
+
+                <div class="col-md-12 pt-5">
+                    <div class="">
+                        <h4 class="text-center">{{ $message->title ?? '' }}</h4>
+                        <div class="text-justify">
+                            {!! $message->description !!}
                         </div>
                     </div>
                 </div>
-            @endforeach
+
+            </div>
+        @endforeach
 
         </div>
         {{-- end message section --}}
