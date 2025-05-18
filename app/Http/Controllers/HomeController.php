@@ -39,7 +39,14 @@ class HomeController extends Controller
 
     public function contact(Request $request){
         if($request->isMethod('post')){
-            Contact::create($request->all());
+            $validated = $request->validate([
+                'name' => 'required|string|max:255',
+                'email' => 'required|email|max:255',
+                'phone' => 'required|string|regex:/^[0-9+\-\s()]+$/|min:7|max:20',
+                'subject' => 'required|string|max:500',
+                'message' => 'required|string|max:1000',
+            ]);
+            Contact::create($validated);
             return back()->with('message','Form Submitted Successfully');
         }
         return view('frontend.pages.contactus');
